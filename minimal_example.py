@@ -18,12 +18,14 @@ class ComponentLibraryParser:
     @staticmethod
     def parse_component_library(filePath):
         component_dict = {}
-        component_info = None
-        name = None
+        categories = {"sensing": [], "processing": [], "communication": []}
 
         type_pattern = re.compile(r"type (\w+) (\w+) pwr ([\d.]+) prf ([\d.-]+)")
 
         with open(filePath, "r") as file:
+            component_info = None
+            name = None
+
             for line in file:
                 line = line.strip()
                 if line.startswith("@BEGIN COMPONENT"):
@@ -37,6 +39,10 @@ class ComponentLibraryParser:
                 elif line.startswith("@END"):
                     if name and component_info:
                         component_dict[name] = component_info
+                        for component_type in component_info["types"]:
+                            category = component_type["category"]
+                            if category in categories:
+                                categories[category].append((name, component_type))
                     component_info = None
                     name = None
                 elif component_info is not None:
@@ -57,7 +63,7 @@ class ComponentLibraryParser:
                             }
                             component_info["types"].append(component_type)
 
-        return component_dict
+        return categories
 
     @staticmethod
     def createConfigurationSpace(components):
