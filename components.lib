@@ -1,0 +1,490 @@
+# This is a comment
+# A sample component library file
+# All sizes are in milimeters
+# All pwrs are in W
+# "type" keyword has to be followed by: sensing, processing or communication
+# "sensing" keyword has to be followed by: accelerometer, gyroscope, magnetometer, EEG, EMG, temperature
+# "processing" keyword has to be followed by: cpu, dsp, gpu
+# "communication" keyword has to be followed by: ble, zigbee, WiFi
+
+substrate_length 100
+substrate_width 100
+
+@BEGIN COMPONENT CC2533F32RHAR
+
+length 6
+width 6
+flexibility 0
+type communication zigbee pwr 0.0966 prf 250000 # 3.0V * (38.8 - 6.6)mA 32-MHz XOSC running, radio in boost mode TX #  250 kbps
+type processing cpu pwr 0.0198 prf 256000000       # 3.0V * 6.6mA 32-MHz XOSC running. No radio or peripherals active.  # 8 bit * 32 Mhz
+
+@END
+
+@BEGIN COMPONENT CC3200R1MXRGCR/T
+
+length 9
+width 9
+flexibility 0
+type communication WiFi pwr 0.94572 prf 13000000       # 3.6V * (278 - 15.3)mA [MPU active, TX 1 DSSS, TX pwr level = 0] # 13 Mbps
+type processing cpu pwr 0.05508 prf 2560000000         # 3.6V * 15.3mA [MCU ACTIVE, NWP idle connected] # 32 bit * 80 Mhz    
+
+@END
+
+@BEGIN COMPONENT BMA222
+
+length 2
+width 2
+flexibility 0
+type sensing accelerometer pwr 0.0003336 prf 24000        # 2.4V * 0.139mA  # 8bit * 3-axis * 1000 Hz
+
+@END
+
+@BEGIN COMPONENT LIS2HH12 
+
+length 2
+width 2
+flexibility 0
+type sensing gyroscope pwr 0.00045 prf 38400 # 16 bit * 3-axis * 800 Hz              # 2.5V * 0.18mA
+type sensing temperature pwr 0.00045 prf 110 # 11 bit * 10
+
+@END
+
+@BEGIN COMPONENT CC2564BRVMT 
+
+length 8
+width 8
+flexibility 0
+type communication ble pwr 0.14832 prf 1000000              # 3.6V * 41.2mA # 1 Mbps
+
+@END
+
+@BEGIN COMPONENT SR6438NWS-000 
+
+length 6.4
+width 6.4
+flexibility 0
+type sensing speaker pwr 0.0 prf -1
+
+@END
+
+@BEGIN COMPONENT FLEX_ANTENNA 
+
+length 7
+width 26
+flexibility 1
+type communication antenna pwr 0.0 prf -1
+
+@END
+
+@BEGIN COMPONENT A10192 
+
+length 4
+width 3
+flexibility 0
+type communication antenna pwr 0.0 prf -1
+
+@END
+
+@BEGIN COMPONENT TMS320VC5510AGGW1
+
+length 15
+width 15
+flexibility 0
+type processing dsp pwr 0.1792 prf 6400000000    # 1.6V * 112mA # 32 bit * 200 Mhz        
+
+@END
+
+@BEGIN COMPONENT EMG_SENSOR
+
+length 6
+width 6
+flexibility 1
+type sensing EMG pwr 0 prf -1
+
+@END
+
+@BEGIN COMPONENT EEG_SENSOR
+
+length 6
+width 6
+flexibility 1
+type sensing EEG pwr 0 prf -1
+
+@END
+
+@BEGIN COMPONENT AT30TSE004A
+
+length 2
+width 3
+flexibility 0
+type sensing temperature pwr 0.00072 prf 146.7      # 3.6V * 0.2mA # 75ms conversion time * 11 bit
+
+@END
+
+@BEGIN COMPONENT TI-CC2650F128RGZ
+
+length 7
+width 7
+flexibility 0
+type communication ble pwr 0.018486 prf 1000000    # 3.0V * (9.1mA - Icpu) [Radio TX, 5-dBm output pwr] # 1 Mbps 
+type communication zigbee pwr 0.018486 prf 250000    # 3.0V * (9.1mA - Icpu)  [Radio TX, 5-dBm output pwr] # 250 kbps 
+type processing cpu pwr 0.008814 prf 1536000000    # 3.0V * (1.45mA + 31uA/Mhz * 48Mhz) # 32bit * 48 MHz    
+
+@END
+
+@BEGIN COMPONENT TI-CC2650F128RHB
+
+length 5
+width 5
+flexibility 0
+type communication ble pwr 0.018486 prf 1000000    # 3.0V * (9.1mA - Icpu) [Radio TX, 5-dBm output pwr] # 1 Mbps 
+type communication zigbee pwr 0.018486 prf 250000    # 3.0V * (9.1mA - Icpu)  [Radio TX, 5-dBm output pwr] # 250 kbps 
+type processing cpu pwr 0.008814 prf 1536000000    # 3.0V * (1.45mA + 31uA/Mhz * 48Mhz) # 32bit * 48 MHz    
+
+@END
+
+@BEGIN COMPONENT TI-CC2650F128RSM
+
+length 4
+width 4
+flexibility 0
+type communication ble pwr 0.018486 prf 1000000    # 3.0V * (9.1mA - Icpu) [Radio TX, 5-dBm output pwr] # 1 Mbps 
+type communication zigbee pwr 0.018486 prf 250000    # 3.0V * (9.1mA - Icpu)  [Radio TX, 5-dBm output pwr] # 250 kbps 
+type processing cpu pwr 0.008814 prf 1536000000    # 3.0V * (1.45mA + 31uA/Mhz * 48Mhz) # 32bit * 48 MHz    
+
+@END
+
+@BEGIN COMPONENT MPU-9250
+
+length 3
+width 3
+flexibility 0
+type sensing gyroscope pwr 0.008 prf 384000       # 2.5V * 3.2mA [accel+gyro, no DMP, 1kHz Gyro, 4kHz accel] # 16bit * 3-axis * 8000 Hz
+type sensing accelerometer pwr 0.00108 prf 192000       # 2.5V * 0.45mA [accel+gyro, no DMP, 1kHz Gyro, 4kHz accel] # 16bit * 3-axis * 4000 Hz
+
+@END
+
+@BEGIN COMPONENT L3GD20 
+
+length 4
+width 4
+flexibility 0
+type sensing accelerometer pwr 0.0183 prf 36480     # 3.0V * 6.1mA # 16 bit * 3-axis * 760 Hz
+type sensing temperature pwr 0.0183 prf 8 			# 8 bit * 1 Hz for temperature
+
+@END
+
+@BEGIN COMPONENT MSP430F1612IRTDT 
+
+length 9
+width 9
+flexibility 0
+type processing cpu pwr 0.0022536 prf  128000000               # 3.6V * 0.626mA # 16 bit * 8 MHz
+
+@END
+
+@BEGIN COMPONENT MMA7660FC
+
+length 3
+width 3
+flexibility 0
+type sensing accelerometer pwr 0.0008232 prf 2160        # 2.8V * 0.294mA  [Active Mode, ODR = 120] # 6 bit * 3-axis * 120 Hz
+
+@END
+
+@BEGIN COMPONENT KXCJ9-1008
+
+length 3
+width 3
+flexibility 0
+type sensing accelerometer pwr 0.000351 prf 57600       # 2.6V * 0.135mA  # 12 bit * 3-axis * 1600 Hz
+
+@END
+
+@BEGIN COMPONENT LIS2DH12
+
+length 2
+width 2
+flexibility 0
+type sensing accelerometer pwr 0.0004625 prf 48384        # 2.5V * 0.185mA  [Current consumption in normal mode] # 12 bit * 3-axis * 1344 Hz
+
+@END
+
+@BEGIN COMPONENT MPU-3050
+
+length 4
+width 4
+flexibility 0
+type sensing gyroscope pwr 0.01525 prf 384000     # 2.5V * 6.1mA # 16bit * 3-axis * 8 kHz
+
+@END
+
+@BEGIN COMPONENT MCP9808
+
+length 4
+width 4
+flexibility 0
+type sensing temperature pwr 0.00231 prf 429   # 3.3V * 0.7mA # 13bit * 33 Hz
+
+@END
+
+@BEGIN COMPONENT CC2530F128RHAR
+
+length 6
+width 6
+flexibility 0
+type communication zigbee pwr 0.081 prf 250000    # 3.0V * (33.5 - 6.5)mA # 250 kbsp    
+type processing cpu pwr 0.0195 prf 256000000 # 3.0V * 6.5mA 32-MHz XOSC running. No radio or peripherals active # 8 bit * 32 Mhz       
+
+@END
+
+@BEGIN COMPONENT CC2630F128RSMR
+
+length 4
+width 4
+flexibility 0
+type communication zigbee pwr 0.018486 prf 250000     # 3.0V * (9.1mA - (1.45mA + 31uA/MHz * 48Mhz)) [Radio TX, 5-dBm output pwr] # 250 kbps
+type processing cpu pwr 0.008814 prf 1536000000     # 3.0V * (1.45mA + 31uA/MHz * 48Mhz) # 32 bit * 48 MHz
+
+@END
+
+@BEGIN COMPONENT CC3100R11MRGCR/T
+
+length 9
+width 9
+flexibility 0
+type communication WiFi pwr 0.9792 prf 13000000            # 3.6V * 272mA [MPU active, TX 1 DSSS, TX pwr level = 0] # 13 Mbps
+
+@END
+
+@BEGIN COMPONENT ADXL362
+
+length 3
+width 3.25
+flexibility 0
+type sensing accelerometer pwr 0.000006 prf 14400        # 2.0V * 0.003mA [Normal Operation] # 12 bit * 3-axis * 400
+
+@END
+
+@BEGIN COMPONENT FXLC95000CL
+
+length 5
+width 3
+flexibility 0
+type sensing accelerometer pwr 0.00972 prf 23424        # 1.8V * 5.4mA  [Supply current in RUN mode] # 16 bit * 3-axis * 488
+type processing cpu pwr 0.00972 prf 512000000        # 1.8V * 5.4mA  [Supply current in RUN mode] # 32 bit * 16 MHz
+
+@END
+
+@BEGIN COMPONENT MIS2DH
+
+length 2
+width 2
+flexibility 0
+type sensing accelerometer pwr 0.0004625 prf 48384        # 2.5V * 0.185mA  [Current consumption in normal mode] # 12bit * 3-axis * 1344 Hz
+
+@END
+
+@BEGIN COMPONENT ITG-3701
+
+length 3
+width 3
+flexibility 0
+type sensing gyroscope pwr 0.00825 prf 1536000      # 2.5V * 3.3mA # 16 bit * 3-axis * 32 kHz
+
+@END
+
+@BEGIN COMPONENT ADT7320
+
+length 4
+width 4
+flexibility 0
+type sensing temperature pwr 0.000693 prf 3.84   # 3.3V * 0.21mA # 16 bit / 0.24 s (conversion time) 
+
+@END
+
+@BEGIN COMPONENT CC2531F128RHAR
+
+length 6
+width 6
+flexibility 0
+type communication zigbee pwr 0.081 prf 250000     # 3.0V * (33.5 - 6.5)mA # 250 kbps
+type processing cpu pwr 0.0195 prf 256000000     # 3.0V * 6.5mA # 8 bit *32 Mhz
+
+@END
+
+@BEGIN COMPONENT CC2640F128RSMR
+
+length 4
+width 4
+flexibility 0
+type communication zigbee pwr 0.018486 prf 1000000    # 3.0V * (9.1mA - Icpu)  [Radio TX, 5-dBm output pwr] # 1 Mbps
+type processing cpu pwr 0.008814 prf 1536000000    # 3.0V * (1.45mA + 31uA/Mhz * 48Mhz) # 32bit * 48 MHz 
+
+@END
+
+@BEGIN COMPONENT WL1831MODGBMOCR
+
+length 13.3
+width 13.4
+flexibility 0
+type communication WiFi pwr 1.554 prf 54000000       # 3.7V * 420mA [2.4-GHz TX 20 M MIMO MCS15 11.2 dBm ] # 54Mbps  
+type communication ble pwr 0.0004884 prf 1000000         # 3.7V * 0.132mA [Connected, slave role, 1.28-s connect interva] # 1Mbps
+
+@END
+
+@BEGIN COMPONENT ADXL344
+
+length 3
+width 3
+flexibility 0
+type sensing accelerometer pwr 0.000364  prf 124800     # 2.6V * 0.140mA  [ODR >= 100 Hz] # 13 bit * 3-axis * 3200
+
+@END
+
+@BEGIN COMPONENT BMA180
+
+length 3
+width 3
+flexibility 0
+type sensing accelerometer pwr 0.0032175 prf 100800        # 3.3V * 0.975mA  # 14 bit * 3-axis * 2400
+
+@END
+
+@BEGIN COMPONENT KXSS5-2057 
+
+length 5
+width 3
+flexibility 0
+type sensing accelerometer pwr 0.00264 prf 180000        # 3.3V * 0.800mA # 12 bit * 3-axis / 200us
+
+@END
+
+@BEGIN COMPONENT BMG160
+
+length 3
+width 3
+flexibility 0
+type sensing gyroscope pwr 0.012 prf 96000      # 2.4V * 5mA [BW = 1kHz] # 16 bit * 3-axis * 2 kHz
+
+@END
+
+@BEGIN COMPONENT AT30TS74
+
+length 2
+width 3
+flexibility 0
+type sensing temperature pwr 0.000495 prf 360    # 3.3V * 0.150mA # 9 bit / 25ms 
+
+@END
+
+@BEGIN COMPONENT PCT2202
+
+length 0.7
+width 1.1
+flexibility 0
+type sensing temperature pwr 0.000054 prf 96     # 1.8V * 0.030mA # 12bit * 8 Hz
+
+@END
+
+@BEGIN COMPONENT CC2540TF256RHAR
+
+length 6
+width 6
+flexibility 0
+type communication ble pwr 0.0747 prf 1000000   # 3.0V * (31.6 - 6.7)mA # 1 Mbps
+type processing cpu pwr 0.0201 prf 256000000   # 3.0V * 6.7mA # 8 bit * 32 Mhz
+
+@END
+
+@BEGIN COMPONENT CC2564MODNCMOET 
+
+length 7
+width 7
+flexibility 0
+type communication ble pwr 0.14832 prf 1000000        # 3.6V * 41.2mA # 1 Mbps
+
+@END
+
+@BEGIN COMPONENT ADXL345
+
+length 3
+width 5
+flexibility 0
+type sensing accelerometer pwr 0.00035 prf 124800        # 2.5V * 0.140mA  [ODR >= 100 Hz] # 13 bit * 3-axis * 3200 Hz
+
+@END
+
+@BEGIN COMPONENT MMA8451Q
+
+length 3
+width 3
+flexibility 0
+type sensing accelerometer pwr 0.0004125 prf 33600        # 2.5V * 0.165mA  [ODR = 800 Hz] # 14 bit * 3-axis * 800 Hz
+
+@END
+
+@BEGIN COMPONENT SCA3100-D07
+
+length 3.3
+width 7.6
+flexibility 0
+type sensing accelerometer pwr 0.0099 prf 78000      # 3.3V * 3mA   # 13 bit * 3-axis * 2000 Hz
+
+@END
+
+@BEGIN COMPONENT FXAS21002C
+
+#length 4
+#width 4
+#flexibility 0
+#type sensing gyroscope pwr 0.00675 prf 38400    # 2.5V * 2.7mA # 16 bit * 3-axis * 800 Hz
+#
+#@END
+#
+#@BEGIN COMPONENT L3G4200D
+#
+#length 4
+#width 4
+#flexibility 0
+#type sensing gyroscope pwr 0.0183 prf 38400   # 3.0V * 6.1mA # 16bit * 3-axis * 800 Hz
+#
+#@END
+#
+#@BEGIN COMPONENT MAX6642
+#
+#length 3
+#width 3
+#flexibility 0
+#type sensing temperature pwr 0.00165 prf 80    # 3.3V * 0.5mA # 10 bit * 8 Hz 
+#
+#@END
+#
+#@BEGIN COMPONENT Si7053
+#
+#length 3
+#width 3
+#flexibility 0
+#type sensing temperature pwr 0.000297 prf 7333     # 3.3V * 0.090mA # 11 bit / 1.5 ms 
+#
+#@END
+#
+#@BEGIN COMPONENT CC2538NF11RTQR
+#
+#length 8
+#width 8
+#flexibility 0
+#type communication zigbee pwr 0.063 prf 250000     # 3.0V * (34-13)mA # 250 kbps
+#type processing cpu  pwr 0.039 prf 1024000000     # 3.0V * 13mA # 32 bit * 32 Mhz
+#
+#@END
+#
+#@BEGIN COMPONENT CC2541F128RHAR
+#
+#length 6
+#width 6
+#flexibility 0
+#type communication ble pwr 0.0345 prf 2000000     # 3.0V * (18.2mA - 6.7mA) # 2 Mbps
+#type processing cpu pwr 0.0201 prf 256000000     # 3.0V * 6.7mA # 8 bit * 32 Mhz
+#
+#@END
